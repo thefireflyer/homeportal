@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import React, { Component, useState } from 'react'
 import styles from '../styles/Home.module.scss'
 
@@ -20,10 +19,10 @@ class Bookmark extends Component {
   render(){
     return (<div className={styles.bookmark}>
       <a href={this.state.link} >
-        <img src={this.state.icon} height={`70vh`} width={`auto`} style={{display:(this.state.link!="")?"block":"none"}}></img>
+        <img src={this.state.icon} height={`70vh`} width={`auto`} style={{display:(this.state.link!=""&&this.state.icon!="")?"block":"none"}}></img>
         
       </a>
-      <a className={this.state.link!=""?styles.editBookmark:styles.createBookmark} onClick={() => {
+      <a className={this.state.link!=""&&this.state.icon!=""?styles.editBookmark:styles.createBookmark} onClick={() => {
           let bookmark_settings = document.getElementById(styles.editBookmark)
 
           bookmark_settings.querySelector("a").onclick = () => {
@@ -41,8 +40,8 @@ class Bookmark extends Component {
           
           bookmark_settings.style.top = `30vh`
           document.getElementById(styles.closeSettings).style.display = `block`
-        }} ><span class="material-icons-outlined">
-        {this.state.link!=""?"edit":"add_link"}
+        }} ><span className="material-icons-outlined">
+        {this.state.link!=""&&this.state.icon!=""?"edit":"add_link"}
         </span></a>
       </div>
     )
@@ -120,7 +119,6 @@ export default class Home extends Component {
   }
 
   render() {
-    
     return (
       <div className={styles.container}>
         <Head>
