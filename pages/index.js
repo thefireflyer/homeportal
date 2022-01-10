@@ -205,6 +205,7 @@ export default class Home extends Component {
           >
             By theflyingfire
           </a>
+          <p>0.1.0</p>
         </footer>
       </div>
     )
