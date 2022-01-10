@@ -126,7 +126,7 @@ export default class Home extends Component {
         <Head>
           <title>HomePortal</title>
           <meta name="description" content="A better defualt homepage" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="icon.png" />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
         rel="stylesheet" />
         </Head>
