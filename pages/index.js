@@ -31,13 +31,14 @@ class Bookmark extends Component {
             this.state.link = bookmark_settings.querySelector("#href").value
             this.state.icon = bookmark_settings.querySelector("#icon").value
             this.forceUpdate()
+            bookmark_settings.style.top = `100vh`
           }
 
           bookmark_settings.querySelector("#href").value = this.state.link
           bookmark_settings.querySelector("#icon").value = this.state.icon
           
           
-          bookmark_settings.style.display = `block`
+          bookmark_settings.style.top = `30vh`
           document.getElementById(styles.closeSettings).style.display = `block`
         }} ><span class="material-icons-outlined">
         edit
@@ -101,8 +102,6 @@ export default class Home extends Component {
     document.getElementById('bookmarks-visible').checked = this.state.bookmarks_visible;
     document.getElementById('background-url').value = this.state.background
 
-    document.getElementById(styles.bookmarks).style.display = this.state.bookmarks_visible?`grid`:`none`
-
     document.body.style.backgroundImage = "url("+this.state.background.replaceAll("\"", "")+")";
     
 
@@ -135,7 +134,7 @@ export default class Home extends Component {
 
           <h1 id={styles.clock}>00:00</h1>
 
-          <div id={styles.bookmarks}>
+          <div id={styles.bookmarks} style={{display:this.state.bookmarks_visible?"grid":"none"}}>
             {this.state.bookmarks.map(bookmark => {
               return (<Bookmark name={bookmark}></Bookmark>)
             })}
@@ -149,7 +148,7 @@ export default class Home extends Component {
           <a onClick={() => {
             document.getElementById(styles.settings).style.top = `100vh`
             document.getElementById(styles.closeSettings).style.display = `none`
-            document.getElementById(styles.editBookmark).style.display = `none`
+            document.getElementById(styles.editBookmark).style.top = `100vh`
           }} id={styles.closeSettings}></a>
 
 
@@ -191,6 +190,9 @@ export default class Home extends Component {
                 this.state.bookmarks_visible = document.getElementById('bookmarks-visible').checked
                 this.state.background = document.getElementById('background-url').value
                 this.forceUpdate()
+
+                document.getElementById(styles.settings).style.top = `100vh`
+
               }} ><h2>Update and save</h2></a>
 
             </center>
