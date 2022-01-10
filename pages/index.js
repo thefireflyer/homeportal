@@ -8,21 +8,22 @@ class Bookmark extends Component {
     super(props)
     this.state = {
       name : this.props.name,
-      link : "/",
-      icon : "/temp.ico",
+      link : "",
+      icon : "",
     }
   }
   componentDidMount() {
-    this.state.link = (localStorage.getItem(this.state.name+"-href")?localStorage.getItem(this.state.name+"-href"):"/")
-    this.state.icon = localStorage.getItem(this.state.name+"-icon")?localStorage.getItem(this.state.name+"-icon"):"/temp.ico"
+    this.state.link = (localStorage.getItem(this.state.name+"-href")?localStorage.getItem(this.state.name+"-href"):"")
+    this.state.icon = localStorage.getItem(this.state.name+"-icon")?localStorage.getItem(this.state.name+"-icon"):""
     this.forceUpdate()
   }
   render(){
     return (<div className={styles.bookmark}>
       <a href={this.state.link} >
-        <img src={this.state.icon} alt={this.state.name} height={`70vh`} width={`auto`}></img>
+        <img src={this.state.icon} height={`70vh`} width={`auto`} style={{display:(this.state.link!="")?"block":"none"}}></img>
+        
       </a>
-      <a className={styles.editBookmark} onClick={() => {
+      <a className={this.state.link!=""?styles.editBookmark:styles.createBookmark} onClick={() => {
           let bookmark_settings = document.getElementById(styles.editBookmark)
 
           bookmark_settings.querySelector("a").onclick = () => {
@@ -41,7 +42,7 @@ class Bookmark extends Component {
           bookmark_settings.style.top = `30vh`
           document.getElementById(styles.closeSettings).style.display = `block`
         }} ><span class="material-icons-outlined">
-        edit
+        {this.state.link!=""?"edit":"add_link"}
         </span></a>
       </div>
     )

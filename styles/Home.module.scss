@@ -186,12 +186,10 @@
   border-radius: 20px;
 
   height: min-content;
-  width: 30vw;
+  width: fit-content;
 
   padding: 1rem;
 
-  min-width:fit-content;
-  max-width: max-content;
   overflow: hidden;
 }
 
@@ -252,7 +250,6 @@
 @media (max-width: 600px) {
   #bookmarks {
     width: 94vw;
-    min-width:auto;
   }
   #editBookmark {
     width: 90vw;
