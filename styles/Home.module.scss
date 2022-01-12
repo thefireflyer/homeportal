@@ -131,7 +131,7 @@
 
 #openSettings {
   position: absolute;
-  bottom: 4vh;
+  bottom: 3.5vh;
   right: 3vw;
 }
 
@@ -214,11 +214,27 @@
   transform: scale(1.1, 1.1);
 }
 
-#offlineIcon {
+#bottomPins {
   position: absolute;
   bottom: 4vh;
   left: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.pin {
+  transform: none;
+  transition: transform 500ms;
+}
+.pin:hover {
+  transform: scale(1.3,1.3);
+}
+
+#offlineIcon {
   display: none;
+  margin-right: 0.5vw;
 }
 
 #editBookmark {

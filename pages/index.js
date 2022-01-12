@@ -74,6 +74,7 @@ export default class Home extends Component {
       let hours = (date.getHours()<12)?(date.getHours()):(date.getHours()-12)
       clock.innerHTML = ((this.state.clock_mode)?hours:date.getHours()) + ":" + date.getMinutes()
 
+    //TESTING: FIXME: !!!
       document.getElementById(styles.offlineIcon).style.display = navigator.onLine?`none`:`block`;
       this.forceUpdate()
 
@@ -155,7 +156,7 @@ export default class Home extends Component {
               document.getElementById(styles.container).style.left = `-85vw`
             }
             document.getElementById(styles.closeSettings).style.display = `block`
-          }} id={styles.openSettings}><span className="material-icons-outlined md-48">settings</span></a>
+          }} id={styles.openSettings}><span className={"material-icons-outlined "+styles.pin} >settings</span></a>
 
           <a onClick={closeAll} id={styles.closeSettings}></a>
 
@@ -169,11 +170,16 @@ export default class Home extends Component {
             <a>update and save</a>
           </div>
 
-
-          <div id={styles.offlineIcon}>
-          <span className="material-icons-outlined">
-          offline_pin
-          </span>
+          <div id={styles.bottomPins} >
+            <span id={styles.offlineIcon} className={"material-icons-outlined "+styles.pin} >
+            offline_pin
+            </span>
+            
+            <span className={"material-icons-outlined "+styles.pin} onClick={() => {
+              window.location.href = "https://github.com/theflyingfire/homeportal"
+            }}>
+            code
+            </span>
           </div>
 
         </main>
