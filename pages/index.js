@@ -79,19 +79,17 @@ export default class Home extends Component {
 
     }, 10000, this.state);
 
-    let setup = (localStorage.getItem("setup")==null||localStorage.getItem("bookmarks")==null)
+    let setup = (localStorage.getItem("setup")==null)
     
     if (setup)
     {
       localStorage.setItem("setup", "success")
       localStorage.setItem("clock-mode", this.state.clock_mode)
       localStorage.setItem("bookmarks-visible", this.state.bookmarks_visible)
-      localStorage.setItem("background", this.state.background)
-
-      this.state.bookmarks.forEach(bookmark => {
-        localStorage.setItem(bookmark+"-href", "")
-        localStorage.setItem(bookmark+"-icon", "/edit.ico")
-      })
+    }
+    if (localStorage.getItem("setup") == "success")
+    {
+      localStorage.setItem("setup", "v0.2.0")
     }
     
     this.state.background = localStorage.getItem("background");
@@ -102,7 +100,6 @@ export default class Home extends Component {
     document.getElementById('bookmarks-visible').checked = this.state.bookmarks_visible;
     document.getElementById('background-url').value = this.state.background
 
-    document.body.style.backgroundImage = "url("+this.state.background.replaceAll("\"", "")+")";
     
 
     let clock = document.getElementById(styles.clock)
@@ -117,19 +114,36 @@ export default class Home extends Component {
     this.forceUpdate()
 
   }
+  closeAll()
+  {
+    document.getElementById(styles.container).style.left = `0`
+    document.getElementById(styles.closeSettings).style.display = `none`
+    document.getElementById(styles.editBookmark).style.top = `100vh`
+  }
 
   render() {
     return (
-      <div className={styles.container}>
+      <div id={styles.container}>
         <Head>
           <title>HomePortal</title>
           <meta name="description" content="A better defualt homepage" />
           <link rel="icon" href="icon.png" />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
         rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"></link>
         </Head>
 
-        <main className={styles.main}>
+        <main id={styles.main} style={{backgroundImage:"url("+this.state.background.replaceAll("\"", "")+")"}}>
+          
+          <div id={styles.background}><video width="1920" height="1080" autoPlay muted loop 
+          style={{display:this.state.background!=""?'none':'block'}}>
+            TODO: make background animation!!
+            <source src="homeportal/bg.mp4" type="video/mp4"></source>
+          Your browser does not support the video tag.
+          </video></div>
+          
 
           <h1 id={styles.clock}>00:00</h1>
 
@@ -140,15 +154,16 @@ export default class Home extends Component {
           </div>
           
           <a onClick={() => {
-            document.getElementById(styles.settings).style.top = `0vh`
+            if (screen.width > 600){
+            document.getElementById(styles.container).style.left = `-20vw`
+            }
+            else {
+              document.getElementById(styles.container).style.left = `-85vw`
+            }
             document.getElementById(styles.closeSettings).style.display = `block`
           }} id={styles.openSettings}><span className="material-icons-outlined md-48">settings</span></a>
 
-          <a onClick={() => {
-            document.getElementById(styles.settings).style.top = `100vh`
-            document.getElementById(styles.closeSettings).style.display = `none`
-            document.getElementById(styles.editBookmark).style.top = `100vh`
-          }} id={styles.closeSettings}></a>
+          <a onClick={this.closeAll} id={styles.closeSettings}></a>
 
 
 
@@ -167,6 +182,9 @@ export default class Home extends Component {
           </span>
           </div>
 
+        </main>
+        
+
           <div id={styles.settings}>
             <center id={styles.settingsPanel}>
               <h1>Settings</h1>
@@ -176,7 +194,7 @@ export default class Home extends Component {
               <br></br>
               <input type={`checkbox`} id='bookmarks-visible'></input><span>bookmarks</span>
               <br></br>
-              <input id="background-url" type={`url`} placeholder='url'></input><span>background image url</span>
+              <input id="background-url" type={`url`} placeholder='url'></input><br></br><span>background image url</span>
 
               <br></br>
 
@@ -190,23 +208,12 @@ export default class Home extends Component {
                 this.state.background = document.getElementById('background-url').value
                 this.forceUpdate()
 
-                document.getElementById(styles.settings).style.top = `100vh`
+                this.closeAll()
 
               }} ><h2>Update and save</h2></a>
 
             </center>
           </div>
-
-        </main>
-
-        <footer className={styles.footer}>
-          <a
-            href="https://theflyingfire.github.io/website/"
-          >
-            By theflyingfire
-          </a>
-          <p>0.1.0</p>
-        </footer>
       </div>
     )
   }
