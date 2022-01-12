@@ -31,7 +31,7 @@ class Bookmark extends Component {
             this.state.link = bookmark_settings.querySelector("#href").value
             this.state.icon = bookmark_settings.querySelector("#icon").value
             this.forceUpdate()
-            bookmark_settings.style.top = `100vh`
+            closeAll()
           }
 
           bookmark_settings.querySelector("#href").value = this.state.link
@@ -114,12 +114,6 @@ export default class Home extends Component {
     this.forceUpdate()
 
   }
-  closeAll()
-  {
-    document.getElementById(styles.container).style.left = `0`
-    document.getElementById(styles.closeSettings).style.display = `none`
-    document.getElementById(styles.editBookmark).style.top = `100vh`
-  }
 
   render() {
     return (
@@ -163,7 +157,7 @@ export default class Home extends Component {
             document.getElementById(styles.closeSettings).style.display = `block`
           }} id={styles.openSettings}><span className="material-icons-outlined md-48">settings</span></a>
 
-          <a onClick={this.closeAll} id={styles.closeSettings}></a>
+          <a onClick={closeAll} id={styles.closeSettings}></a>
 
 
 
@@ -208,7 +202,7 @@ export default class Home extends Component {
                 this.state.background = document.getElementById('background-url').value
                 this.forceUpdate()
 
-                this.closeAll()
+                closeAll()
 
               }} ><h2>Update and save</h2></a>
 
@@ -217,4 +211,10 @@ export default class Home extends Component {
       </div>
     )
   }
+}
+function closeAll()
+{
+  document.getElementById(styles.container).style.left = `0`
+  document.getElementById(styles.closeSettings).style.display = `none`
+  document.getElementById(styles.editBookmark).style.top = `100vh`
 }
