@@ -71,10 +71,9 @@ export default class Home extends Component {
       let clock = document.getElementById(styles.clock)
       
       const date = new Date();
-      let hours = (date.getHours()<12)?(date.getHours()):(date.getHours()-12)
+      let hours = (date.getHours()<13)?(date.getHours()):(date.getHours()-12)
       clock.innerHTML = ((this.state.clock_mode)?hours:date.getHours()) + ":" + date.getMinutes()
 
-    //TESTING: FIXME: !!!
       document.getElementById(styles.offlineIcon).style.display = navigator.onLine?`none`:`block`;
       this.forceUpdate()
 
@@ -106,7 +105,7 @@ export default class Home extends Component {
     let clock = document.getElementById(styles.clock)
     
     const date = new Date();
-    let hours = (date.getHours()<12)?(date.getHours()):(date.getHours()-12)
+    let hours = (date.getHours()<13)?(date.getHours()):(date.getHours()-12)
     clock.innerHTML = ((this.state.clock_mode)?hours:date.getHours()) + ":" + date.getMinutes()
 
     document.getElementById(styles.offlineIcon).style.display = navigator.onLine?`none`:`block`;
