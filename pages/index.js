@@ -92,7 +92,7 @@ export default class Home extends Component {
       localStorage.setItem("setup", "v0.2.0")
     }
     
-    this.state.background = localStorage.getItem("background");
+    this.state.background = localStorage.getItem("background")==""?localStorage.getItem("background"):"";
     this.state.clock_mode = localStorage.getItem("clock-mode")=='true';
     this.state.bookmarks_visible = localStorage.getItem("bookmarks-visible")=='true';
 
@@ -125,7 +125,7 @@ export default class Home extends Component {
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
         rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin></link>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"></link>
         </Head>
 
@@ -134,7 +134,7 @@ export default class Home extends Component {
           <div id={styles.background}><video width="1920" height="1080" autoPlay muted loop 
           style={{display:this.state.background!=""?'none':'block'}}>
             TODO: make background animation!!
-            <source src="homeportal/bg.mp4" type="video/mp4"></source>
+            <source src="bg.mp4" type="video/mp4"></source>
           Your browser does not support the video tag.
           </video></div>
           
