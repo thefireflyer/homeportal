@@ -134,7 +134,7 @@ export default class Home extends Component {
           <div id={styles.background}><video width="1920" height="1080" autoPlay muted loop 
           style={{display:this.state.background!=""?'none':'block'}}>
             TODO: make background animation!!
-            <source src="bg.mp4" type="video/mp4"></source>
+            <source src="homeportal/bg.mp4" type="video/mp4"></source>
           Your browser does not support the video tag.
           </video></div>
           

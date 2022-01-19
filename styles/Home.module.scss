@@ -16,6 +16,7 @@
   justify-content: center;
   align-items: center;
   filter: drop-shadow(0 0 1vw black);
+  background-color: rgba(0, 0, 0, 0.2);
   }
 
 .footer {
@@ -125,14 +126,14 @@
 #clock {
   position: absolute;
   top: 2vh;
-  right: 3vw;
+  right: 1vw;
   font-size: 5rem;
 }
 
 #openSettings {
   position: absolute;
-  bottom: 3.5vh;
-  right: 3vw;
+  bottom: 2vh;
+  right: 1vw;
 }
 
 #settings {
@@ -173,7 +174,7 @@
 
   position: absolute;
   top: 26vh;
-  right: 3vw;
+  right: 1vw;
   
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
@@ -216,7 +217,8 @@
 
 #bottomPins {
   position: absolute;
-  bottom: 4vh;
+  bottom: 2vh;
+  height: 2.5rem;
   left: 3vw;
   display: flex;
   justify-content: center;
@@ -277,8 +279,20 @@
     .editBookmark {
       display: block;
     }
+    overflow-x: scroll;
   }
   #editBookmark {
     width: 90vw;
+    backdrop-filter: none;
+    transition: none;
+  }
+  #bottomPins {
+    bottom: 6vh;
+  }
+  #openSettings {
+    bottom: 6vh;
+  }
+  #background {
+    display: none;
   }
 }
