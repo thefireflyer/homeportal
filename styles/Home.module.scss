@@ -17,6 +17,9 @@
   align-items: center;
   filter: drop-shadow(0 0 1vw black);
   background-color: rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   }
 
 .footer {
@@ -177,7 +180,7 @@
   right: 1vw;
   
   background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
+  //backdrop-filter: blur(5px);
 
   border-radius: 20px;
 
@@ -248,14 +251,14 @@
   transition: top 1s;
   
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
+  //backdrop-filter: blur(5px);
 
   border-radius: 20px;
   padding: 1rem;
 }
 #editBookmark a:hover {
   color: orange;
-  filter: drop-shadow(0 0 1vw black);
+  //filter: drop-shadow(0 0 1vw black);
 }
 
 #background {
@@ -275,7 +278,7 @@
   }
   #bookmarks {
     top: 3vh;
-    width: 94vw;
+    width: 98vw;
     .editBookmark {
       display: block;
     }
@@ -287,10 +290,13 @@
     transition: none;
   }
   #bottomPins {
-    bottom: 6vh;
+    bottom: 8vh;
+  }
+  .pin {
+    transition: none;
   }
   #openSettings {
-    bottom: 6vh;
+    bottom: 8vh;
   }
   #background {
     display: none;
