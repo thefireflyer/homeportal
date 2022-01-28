@@ -92,7 +92,7 @@ export default class Home extends Component {
       localStorage.setItem("setup", "v0.2.0")
     }
     
-    this.state.background = localStorage.getItem("background")!=""?localStorage.getItem("background"):"";
+    this.state.background = (localStorage.getItem("background")!=""&&localStorage.getItem("background"))?localStorage.getItem("background"):"";
     this.state.clock_mode = localStorage.getItem("clock-mode")=='true';
     this.state.bookmarks_visible = localStorage.getItem("bookmarks-visible")=='true';
 
